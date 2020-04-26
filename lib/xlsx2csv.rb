@@ -1,0 +1,56 @@
+require "roo"
+
+PREFECTURE_MAP = {
+  "埼玉" => "saitama",
+  "山口" => "yamaguchi",
+  "広島" => "hiroshima",
+  "沖縄" => "okinawa",
+  "秋田" => "akita",
+  "香川" => "kagawa",
+  "大分" => "oita",
+  "山形" => "yamagata",
+  "徳島" => "tokushima",
+  "滋賀" => "shiga",
+  "群馬" => "gunma",
+  "高知" => "kouchi",
+  "三重" => "mie",
+  "大阪" => "osaka",
+  "山梨" => "yamanashi",
+  "愛媛" => "ehime",
+  "熊本" => "kumamoto",
+  "茨城" => "ibaraki",
+  "鳥取" => "tottori",
+  "京都" => "kyoto",
+  "奈良" => "nara",
+  "岐阜" => "gifu",
+  "愛知" => "aichi",
+  "石川" => "ishikawa",
+  "長崎" => "nagasaki",
+  "北海道" => "hokkaido",
+  "佐賀" => "saga",
+  "宮城" => "miyagi",
+  "岡山" => "okayama",
+  "新潟" => "niigata",
+  "福井" => "fukui",
+  "長野" => "nagano",
+  "和歌山" => "wakayama",
+  "兵庫" => "hyogo",
+  "宮崎" => "miyazaki",
+  "岩手" => "iwate",
+  "東京" => "tokyo",
+  "福岡" => "fukuoka",
+  "青森" => "aomori",
+  "神奈川" => "kanagawa",
+  "千葉" => "chiba",
+  "富山" => "toyama",
+  "島根" => "shimane",
+  "栃木" => "tochigi",
+  "福島" => "fukushima",
+  "静岡" => "shizuoka",
+  "鹿児島" => "kagoshima"
+}
+
+xlsx = Roo::Excelx.new(ARGV[0])
+xlsx.sheets.each do |x|
+  File.write("#{PREFECTURE_MAP[x]||x}.csv", xlsx.sheet(x).to_csv)
+end
